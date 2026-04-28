@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { FileText, Loader2, Check } from "lucide-react";
 
-export default function RegisterPage() {
+function RegisterForm() {
   const router = useRouter();
   const params = useSearchParams();
   const plan = params.get("plan") || "free";
@@ -55,7 +55,9 @@ export default function RegisterPage() {
           </Link>
           <h1 className="text-2xl font-bold text-slate-900">Create your account</h1>
           <p className="text-slate-500 mt-1">
-            {plan === "free" ? "Start free — no credit card required" : `Start your 14-day free trial of ${plan.charAt(0).toUpperCase() + plan.slice(1)}`}
+            {plan === "free"
+              ? "Start free — no credit card required"
+              : `Start your 14-day free trial of ${plan.charAt(0).toUpperCase() + plan.slice(1)}`}
           </p>
         </div>
 
@@ -134,5 +136,13 @@ export default function RegisterPage() {
         </p>
       </div>
     </div>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense>
+      <RegisterForm />
+    </Suspense>
   );
 }
