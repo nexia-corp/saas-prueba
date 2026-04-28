@@ -81,7 +81,7 @@ export default async function DashboardPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        {stats.map((stat) => (
+        {stats.map((stat: any) => (
           <div key={stat.label} className="bg-white rounded-xl p-5 border border-slate-100 shadow-sm">
             <div className={`w-10 h-10 rounded-xl ${stat.color} flex items-center justify-center mb-3`}>
               <stat.icon className="w-5 h-5" />
@@ -116,7 +116,7 @@ export default async function DashboardPage() {
           </div>
         ) : (
           <div className="divide-y divide-slate-50">
-            {data.proposals.map((p) => (
+            {data.proposals.map((p: any) => (
               <Link
                 key={p.id}
                 href={`/proposals/${p.id}`}

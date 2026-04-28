@@ -31,7 +31,7 @@ export default async function ClientsPage() {
       ) : (
         <div className="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
           <div className="divide-y divide-slate-50">
-            {clients.map((c) => (
+            {clients.map((c: any) => (
               <div key={c.id} className="flex items-center justify-between px-6 py-4 hover:bg-slate-50">
                 <div className="flex items-center gap-4">
                   <div className="w-9 h-9 rounded-full bg-indigo-100 text-indigo-700 font-bold text-sm flex items-center justify-center">

@@ -50,7 +50,7 @@ export default async function ProposalsPage() {
             <span className="text-sm text-slate-500">All proposals</span>
           </div>
           <div className="divide-y divide-slate-50">
-            {proposals.map((p) => (
+            {proposals.map((p: any) => (
               <Link
                 key={p.id}
                 href={`/proposals/${p.id}`}
