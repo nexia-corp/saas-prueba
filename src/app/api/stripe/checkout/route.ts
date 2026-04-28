@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
-import { stripe, PLANS } from "@/lib/stripe";
+import { getStripe, PLANS } from "@/lib/stripe";
 import { db } from "@/lib/db";
 
 export async function POST(req: Request) {
@@ -18,6 +18,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Plan not configured" }, { status: 400 });
   }
 
+  const stripe = getStripe();
   const subscription = await db.subscription.findUnique({
     where: { userId: session.user.id as string },
   });

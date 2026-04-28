@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import { db } from "@/lib/db";
 import type Stripe from "stripe";
 
@@ -7,6 +7,7 @@ export async function POST(req: Request) {
   const body = await req.text();
   const sig = req.headers.get("stripe-signature")!;
 
+  const stripe = getStripe();
   let event: Stripe.Event;
   try {
     event = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WEBHOOK_SECRET!);

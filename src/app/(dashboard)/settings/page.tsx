@@ -1,6 +1,6 @@
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { PLANS } from "@/lib/stripe";
+import { PLANS } from "@/lib/plans";
 import { formatDate } from "@/lib/utils";
 import BillingButton from "@/components/settings/BillingButton";
 import { Check, Zap } from "lucide-react";
